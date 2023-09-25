@@ -23,3 +23,17 @@ where I: Iterator<Item = String> {
 
 	opts
 }
+
+#[test]
+fn test() {
+	let res = parse(
+		["--name", "abiria", "-a"]
+			.into_iter()
+			.map(ToOwned::to_owned),
+	);
+
+	assert_eq!(
+		res.get("name"),
+		Some(&"abiria".to_owned())
+	);
+}
